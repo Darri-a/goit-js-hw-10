@@ -5,9 +5,6 @@ const catInfoElement = document.querySelector('.cat-info');
 const loader = document.querySelector('.loader');
 const error = document.querySelector('.error');
 
-error.hidden = true;
-loader.hidden = true;
-
 const breeds = fetchBreeds()
   .then(response => {
     const data = response.data;
@@ -18,9 +15,10 @@ const breeds = fetchBreeds()
     });
 
     catSelector.innerHTML = catsElements;
+    catSelector.hidden = false;
   })
   .catch(e => {
-    catSelector.hidden = false;
+    catSelector.hidden = true;
     catInfoElement.hidden = false;
     error.hidden = false;
     loader.hidden = true;
